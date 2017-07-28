@@ -21,7 +21,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate.cfg.xml" value="2de5ab25-c3b2-4aea-afe4-e63ce58fab5e" />
           <unit-entry name="hibernate4AnnotatedSessionFactory" value="dataSource" />
         </datasource-map>
         <naming-strategy-map />

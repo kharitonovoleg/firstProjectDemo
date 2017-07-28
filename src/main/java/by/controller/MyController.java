@@ -1,6 +1,8 @@
 package by.controller;
 
+import by.model.Role;
 import by.model.User;
+import by.service.RoleService;
 import by.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,13 @@ public class MyController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RoleService roleService;
+
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
+    }
+
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
@@ -25,6 +34,8 @@ public class MyController {
     public ModelAndView main(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("list", userService.listUser());
+        model.addAttribute("role", new Role());
+        model.addAttribute("listRole", roleService.listRole());
         return new ModelAndView("index");
     }
 

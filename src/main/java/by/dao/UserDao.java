@@ -29,11 +29,14 @@ public class UserDao {
     }
 
     public void addUser(User user) {
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleDao.getRoleById(2));
-        user.setRoles(roles);
-        Session session = this.sessionFactory.getCurrentSession();
-        session.persist(user);
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(user);
+        } finally {
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 
     public List<User> listUser() {
